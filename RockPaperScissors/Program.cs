@@ -29,7 +29,7 @@ namespace RockPaperScissors
                     }
                     else if (userChoice == "paper")
                     {
-                        Console.WriteLine("The computer chose rock, it is a tie!\n");
+                        Console.WriteLine("The computer chose paper, it is a tie!\n");
                     }
                     else if (userChoice == "scissors")
                     {
