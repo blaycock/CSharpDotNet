@@ -23,12 +23,11 @@ namespace Mastermind
             // CONVERT THE FOLLOWING CODE INTO A "FOR" LOOP
             int randomIndex = rnd.Next(0, 2);
             for(int i = 0; i < 5; i++){
-
+                randomIndex = rnd.Next(0, 2);
+                secret[1] = colorArray[randomIndex];
                 Console.WriteLine(i);
                     }                                     
             
-            randomIndex = rnd.Next(0, 2);
-            secret[1] = colorArray[randomIndex];
             // CONVERT THE CODE ABOVE INTO A "FOR" LOOP
 
             // When the game is not finished
