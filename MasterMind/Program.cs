@@ -1,91 +1,111 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MasterMind
+namespace Mastermind
 {
     class Program
     {
-        // possible letters in code
-        public static char[] letters = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h' };
+        static string[] secret = new string[2];
+        static string[] colorArray = new string[] { "Red", "Yellow", "Blue" };
+        static bool gameOver = false;
 
-        // size of code
-        public static int codeSize = 4;
-
-        // number of allowed attempts to crack the code
-        public static int allowedAttempts = 10;
-
-        // number of tried guesses
-        public static int numTry = 0;
-
-        // test solution
-        public static char[] solution = new char[] { 'a', 'b', 'c', 'd' };
-
-        // game board
-        public static string[][] board = new string[allowedAttempts][];
-
-
-        public static void Main()
+        static void Main(string[] args)
         {
-            char[] guess = new char[4];
-
-            CreateBoard();
-            DrawBoard();
-            Console.WriteLine("Enter Guess:");
-            guess = Console.ReadLine().ToCharArray();
-
-            // leave this command at the end so your program does not close automatically
-            Console.ReadLine();
-        }
-
-        public static bool CheckSolution(char[] guess)
-        {
-            // Your code here
-
-            return false;
-        }
-
-        public static string GenerateHint(char[] guess)
-        {
-            // Your code here
-            return " ";
-        }
-
-        public static void InsertCode(char[] guess)
-        {
-            // Your code here
-        }
-
-        public static void CreateBoard()
-        {
-            for (var i = 0; i < allowedAttempts; i++)
-            {
-                board[i] = new string[codeSize + 1];
-                for (var j = 0; j < codeSize + 1; j++)
-                {
-                    board[i][j] = " ";
-                }
-            }
-        }
-
-        public static void DrawBoard()
-        {
-            for (var i = 0; i < board.Length; i++)
-            {
-                Console.WriteLine("|" + String.Join("|", board[i]));
-            }
-
-        }
-
-        public static void GenerateRandomCode()
-        {
+            //1. Generate Random Secret
             Random rnd = new Random();
-            for (var i = 0; i < codeSize; i++)
+            // Generate two random indices to get two random colors from the ColorArray
+            // and store them in the secret array
+
+            // YOUR TASK:
+            // CONVERT THE FOLLOWING CODE INTO A "FOR" LOOP
+            int randomIndex = rnd.Next(0, 2);
+            for(int i = 0; i < 5; i++){
+
+                Console.WriteLine(i);
+                    }                                     
+            
+            randomIndex = rnd.Next(0, 2);
+            secret[1] = colorArray[randomIndex];
+            // CONVERT THE CODE ABOVE INTO A "FOR" LOOP
+
+            // When the game is not finished
+            // We will repeat the following tasks
+            while (gameOver == false)
             {
-                solution[i] = letters[rnd.Next(0, letters.Length)];
+                // 2. Ask user to enter a guess
+                                                   
+                Console.WriteLine("Enter your guess [Color1 Color2]: ");
+                string[] guess = Console.ReadLine().Split(' '); // We can ignore the data validation
+
+                // 3. Check if the user's guess is correct
+                if (guess[0] == secret[0] && guess[1] == secret[1]) // user's guess is correct
+                {
+                    Console.WriteLine("You won!");
+                    gameOver = true; // Set gameOver to be true so the "while" loop will finish
+                }
+                // user's guess is not correct
+                // now we need to give the user some hint
+                // the format of hint is FirstDigit-SecondDigit
+                // the FirstDigit stands for the number of colors correctly guessed
+                // the SecondDigit stands for the number of position correctly guessed
+                else
+                {
+                    int correctColorCount = 0;
+                    int correctPositionCount = 0;
+
+                    // 3.1 Generate the first digit
+
+                    // YOUR TASK
+                    // Convert the following code into a "for" loop
+                    // Use .Contains function to replace the comparison
+                    if (guess[0] == secret[0] || guess[0] == secret[1])
+                    {
+                        correctColorCount++;
+                    }
+                    if (guess[1] == secret[1] || guess[1] == secret[0])
+                    {
+                        correctColorCount++;
+                    }
+                    // Convert the code above into a "for" loop
+
+                    // 3.2 Generate the second digit
+
+                    // YOUR TASK
+                    // Convert the following code into a "for" loop
+
+                    if (guess[0] == secret[0])
+                    {
+                        correctPositionCount++;
+                    }
+                    if (guess[1] == secret[1])
+                    {
+                        correctPositionCount++;
+                    }
+                    // Convert the code above into a "for" loop
+
+                    // 3.3 Output the hint to the user
+                    // YOUR TASK
+                    // Fill out the blank with the hint generated above in the correct format
+                    Console.WriteLine(""); 
+
+                 // 4. Tell the "while" loop to continue
+                 // YOUR TASK
+                 // What value should you assign to which variable so that the "while" loop
+                 // will continue?
+
+                    
+                }               
+
             }
+            Console.Read();
+
         }
+
+        
+
     }
+
 }
