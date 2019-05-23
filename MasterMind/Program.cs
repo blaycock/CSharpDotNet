@@ -6,105 +6,136 @@ using System.Threading.Tasks;
 
 namespace Mastermind
 {
-    class Program
+   class Program
+{
+    static void Main(string[] args)
     {
-        static string[] secret = new string[2];
-        static string[] colorArray = new string[] { "Red", "Yellow", "Blue" };
-        static bool gameOver = false;
+        Console.WriteLine("************** Let's play Master-Mind **************\n");
 
-        static void Main(string[] args)
+        string name = GetPlayerName();
+
+        do
         {
-            //1. Generate Random Secret
-            Random rnd = new Random();
-            // Generate two random indices to get two random colors from the ColorArray
-            // and store them in the secret array
+            Play(name);
 
-            // YOUR TASK:
-            // CONVERT THE FOLLOWING CODE INTO A "FOR" LOOP
-            int randomIndex = rnd.Next(0, 2);
-            for(int i = 0; i < 5; i++){
-                randomIndex = rnd.Next(0, 2);
-                secret[1] = colorArray[randomIndex];
-                Console.WriteLine(i);
-                    }                                     
-            
-            // CONVERT THE CODE ABOVE INTO A "FOR" LOOP
-
-            // When the game is not finished
-            // We will repeat the following tasks
-            while (gameOver == false)
-            {
-                // 2. Ask user to enter a guess
-                                                   
-                Console.WriteLine("Enter your guess [Color1 Color2]: ");
-                string[] guess = Console.ReadLine().Split(' '); // We can ignore the data validation
-
-                // 3. Check if the user's guess is correct
-                if (guess[0] == secret[0] && guess[1] == secret[1]) // user's guess is correct
-                {
-                    Console.WriteLine("You won!");
-                    gameOver = true; // Set gameOver to be true so the "while" loop will finish
-                }
-                // user's guess is not correct
-                // now we need to give the user some hint
-                // the format of hint is FirstDigit-SecondDigit
-                // the FirstDigit stands for the number of colors correctly guessed
-                // the SecondDigit stands for the number of position correctly guessed
-                else
-                {
-                    int correctColorCount = 0;
-                    int correctPositionCount = 0;
-
-                    // 3.1 Generate the first digit
-
-                    // YOUR TASK
-                    // Convert the following code into a "for" loop
-                    // Use .Contains function to replace the comparison
-                    if (guess[0] == secret[0] || guess[0] == secret[1])
-                    {
-                        correctColorCount++;
-                    }
-                    if (guess[1] == secret[1] || guess[1] == secret[0])
-                    {
-                        correctColorCount++;
-                    }
-                    // Convert the code above into a "for" loop
-
-                    // 3.2 Generate the second digit
-
-                    // YOUR TASK
-                    // Convert the following code into a "for" loop
-
-                    if (guess[0] == secret[0])
-                    {
-                        correctPositionCount++;
-                    }
-                    if (guess[1] == secret[1])
-                    {
-                        correctPositionCount++;
-                    }
-                    // Convert the code above into a "for" loop
-
-                    // 3.3 Output the hint to the user
-                    // YOUR TASK
-                    // Fill out the blank with the hint generated above in the correct format
-                    Console.WriteLine(""); 
-
-                 // 4. Tell the "while" loop to continue
-                 // YOUR TASK
-                 // What value should you assign to which variable so that the "while" loop
-                 // will continue?
-
-                    
-                }               
-
-            }
-            Console.Read();
-
+            Console.Write("\nWould you like to play again (Y/N)? ");
         }
-
-        
-
+        while (Console.ReadLine().ToUpper() == "Y");
     }
 
+    private static void Play(string name)
+    {
+        int numberCount = GetRandomNumberCount();
+        Console.Write(numberCount + " it is. Let's play.");
+        Console.WriteLine();
+
+        int[] PCArray = GenerateRandomNumbers(numberCount);
+        Console.WriteLine("A {0}-digit number has been chosen. Each possible digit may be the number 1 to 4.\n", numberCount);
+
+        int difficulty = GetGameDifficulty();
+
+        bool won = false;
+        for (int allowedAttempts = difficulty * numberCount; allowedAttempts > 0 && !won; allowedAttempts--)
+        {
+            Console.WriteLine("\nEnter your guess ({0} guesses remaining)", allowedAttempts);
+
+            int[] userArray = GetUserGuess(numberCount);
+
+            if (CountHits(PCArray, userArray) == numberCount)
+                won = true;
+        }
+
+        if (won)
+            Console.WriteLine("You win, {0}!", name);
+        else
+            Console.WriteLine("Oh no, {0}! You couldn't guess the right number.", name);
+
+        Console.Write("The correct number is: ");
+        for (int j = 0; j < numberCount; j++)
+            Console.Write(PCArray[j] + " ");
+        Console.WriteLine();
+    }
+
+    private static string GetPlayerName()
+    {
+        Console.Write("Please enter your name: ");
+        string name = Console.ReadLine();
+        Console.WriteLine("Welcome, {0}. Have fun!!\n", name);
+        return name;
+    }
+
+    public static int GetRandomNumberCount()
+    {
+        int number;
+
+        Console.Write("How many numbers would you like to use in playing the game (4-10)? ");
+        while (!int.TryParse(Console.ReadLine(), out number) || number < 4 || number > 10)
+            Console.WriteLine("You must pick a number between 4 and 10. Choose again.");
+
+        return number;
+    }
+
+    public static int GetGameDifficulty()
+    {
+        int difficulty = 0;
+
+        Console.Write("Choose a difficulty level (1=hard, 2=medium, 3=easy): ");
+        while (!int.TryParse(Console.ReadLine(), out difficulty) || difficulty < 1 || difficulty > 3)
+            Console.WriteLine("Incorrect entry: Please re-enter.");
+
+        return difficulty;
+    }
+
+    public static int[] GenerateRandomNumbers(int PCSize)
+    {
+        int eachNumber;
+        int[] randomNumber = new int[PCSize];
+        Random rnd = new Random();
+
+        Console.Write("PC number: ");
+        for (int i = 0; i < PCSize; i++)
+        {
+            eachNumber = rnd.Next(1, 5);
+            randomNumber[i] = eachNumber;
+            Console.Write(eachNumber);
+        }
+        Console.WriteLine();
+        return randomNumber;
+    }
+
+    public static int[] GetUserGuess(int userSize)
+    {
+        int number = 0;
+        int[] userGuess = new int[userSize];
+        for (int i = 0; i < userSize; i++)
+        {
+            Console.Write("Digit {0}: ", (i + 1));
+            while (!int.TryParse(Console.ReadLine(), out number) || number < 1 || number > 4)
+                Console.WriteLine("Invalid number!");
+            userGuess[i] = number;
+        }
+        Console.WriteLine();
+        Console.Write("Your guess: ");
+        for (int i = 0; i < userSize; i++)
+        {
+            Console.Write(userGuess[i] + " ");
+        }
+        Console.WriteLine();
+        return userGuess;
+    }
+
+    public static int CountHits(int[] PCArray, int[] userArray)
+    {
+        int hits = 0;
+
+        for (int i = 0; i < PCArray.Length; i++)
+        {
+            if (PCArray[i] == userArray[i])
+                hits++;
+        }
+
+        Console.WriteLine("Results: {0} Hit(s), {1} Miss(es)", hits, PCArray.Length - hits);
+        return hits;
+    }
 }
+    }
