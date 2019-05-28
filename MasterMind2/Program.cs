@@ -28,21 +28,47 @@ namespace MasterMind2
             // repeat the following if game is not over
             while (gameOver == false)
             {
+                // ask user to enter a guess
+                Console.WriteLine("Enter your guess [Color1 Color2]: ");
+                string[] guess = Console.ReadLine().Split(' '); // we can ignore the data validation
+                // check if users guess is correct
+                if (guess[0] == secret[0] && guess[1] == secret[1]) // users guess in incorrect
+                    {
+                   Console.WriteLine("You win!");
+                   gameOver = true; // set gameOver to be true so the while loop will finish
+                    }
+                // users guess is not correct
+                // now give user some hint
+                // the format of hint is FirstDigit-SecondDigit
+                // the FirstDigit stands for the number of colors correctly guessed
+                // the SecondDigit stand for the number of positions correctly guessed
+                else
+                    {
+                        int correctColorCount = 0;
+                        int correctPositionCount = 0;
+
+                    // genterate the first digit
+
+                    // convert the following code into for loop
+                    // use .contains function to replace the comparison
+                     for (int i = 0; i < 1; i++) 
+                        {
+                         if (guess[0] == secret[0] || guess[0] == secret[1])
+                        {
+                        correctColorCount++;
+                         }
+                        if (guess[1] == secret[1] || guess[1] == secret[0])
+                        {
+                        correctColorCount++;
+                        }
+                        Console.WriteLine(correctColorCount);
+                     }
+
+                }
+
 
             }
-            
-            
 
-
-
-
-
-
-
-
-            // ask user to choose two random colors from (Red, Yellow and Blue)
-            /*Console.WriteLine("Welcome to MasterMind, please choose two random colors from R=Red, Y=Yellow and B=Blue.");
-            string guess = Console.ReadLine().ToLower();*/
         }
     }
 }
