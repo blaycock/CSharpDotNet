@@ -47,7 +47,7 @@ namespace MasterMind2
                         int correctColorCount = 0;
                         int correctPositionCount = 0;
 
-                    // genterate the firstDigit
+                    // genterate the firstdigit
 
                     // convert the following code into for loop
                     // use .contains function to replace the comparison
