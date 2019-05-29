@@ -13,7 +13,7 @@ namespace TowersOfHanoi
         {
             // welcome user and present them with the board/towers
             Console.WriteLine("Welcome to Towers of Hanoi, below are the three towers.");
-            // give the user the rules to the game
+            // give the user the rules  to the game
             Console.WriteLine("Here are the rules: The game has three towers with three blocks on the first tower.");
             Console.WriteLine("Only the top blocks can be moved from any given stack.");
             Console.WriteLine("Blocks can only be moved to be on top of larger blocks.");
