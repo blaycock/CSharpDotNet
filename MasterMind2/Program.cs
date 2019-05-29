@@ -56,19 +56,23 @@ namespace MasterMind2
                          if (guess[0] == secret[0] || guess[0] == secret[1])
                         {
                         correctColorCount++;
-                         }
-                        if (guess[1] == secret[1] || guess[1] == secret[0])
-                        {
-                        correctColorCount++;
                         }
                         Console.WriteLine(correctColorCount);
+                     }
+                     for (int i = 0; i < 1; i++)
+                         {
+                         if (guess[0] == secret[0] || guess[0] == secret[1])
+                        {
+                        correctPositionCount++;
+                        }
+                        Console.WriteLine(correctPositionCount);
                      }
 
                 }
 
 
             }
-
         }
+        
     }
 }
