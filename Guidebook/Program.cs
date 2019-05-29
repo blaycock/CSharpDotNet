@@ -45,21 +45,17 @@ namespace Guidebook
                 sGrades = studentGrades[i]; //it is like "100 90 99 98"
                 arrayGrades = sGrades.Split(' ');
 
-                /*string g = studentGrades[i];
-                // output the student's name
-                Console.WriteLine($"Name: {i}");
-                Console.WriteLine($"Grades: {studentGrades[i]}");*/
                 iGrades = Array.ConvertAll(arrayGrades, int.Parse);
 
                 Array.Sort(iGrades);
                 lowestGrade = iGrades[0];
                 highestGrade = iGrades[iGrades.Length - 1];
-                Console.WriteLine(sName);
-                Console.WriteLine(sGrades);
+                Console.WriteLine("Student Name is: " + sName);
+                Console.WriteLine("Highest grade is: " + iGrades.Max());
+                Console.WriteLine("Lowest grade is: " + iGrades.Min());
+                Console.WriteLine("Average grade is: " + iGrades.Average());
             }
-    
-            Console.Read();
-            
+            Console.ReadLine();
         }
     }
 }

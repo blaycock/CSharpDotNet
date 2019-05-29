@@ -19,11 +19,11 @@ namespace MasterMind2
 
             // create For Loop to generate random colors 
             int randomIndex = rnd.Next(0, 3);
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 2; i++)
             {
-                Console.WriteLine(secret[0] = colorArray[randomIndex]);
+                Console.WriteLine(secret[i] = colorArray[randomIndex]);
                 randomIndex = rnd.Next(0, 3);
-                Console.WriteLine(secret[1] = colorArray[randomIndex]);
+                
             }
             // repeat the following if game is not over
             while (gameOver == false)
