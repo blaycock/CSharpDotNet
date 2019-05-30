@@ -19,17 +19,17 @@ namespace MasterMind2
 
             // create For Loop to generate random colors 
             int randomIndex = rnd.Next(0, 3);
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 1; i++)
             {
-                Console.WriteLine(secret[i] = colorArray[randomIndex]);
+                Console.WriteLine(secret[0] = colorArray[randomIndex]);
                 randomIndex = rnd.Next(0, 3);
-                
+                Console.WriteLine(secret[1] = colorArray[randomIndex]);
             }
             // repeat the following if game is not over
             while (gameOver == false)
             {
                 // ask user to enter a guess
-                Console.WriteLine("Enter your guess [Color1 Color2]: ");
+                Console.WriteLine("Enter your guess: ");
                 string[] guess = Console.ReadLine().Split(' '); // we can ignore the data validation
                 // check if users guess is correct
                 if (guess[0] == secret[0] && guess[1] == secret[1]) // users guess in incorrect
@@ -53,7 +53,7 @@ namespace MasterMind2
                     // use .contains function to replace the comparison
                      for (int i = 0; i < 1; i++) 
                         {
-                         if (guess[0] == secret[0] || guess[0] == secret[1])
+                         if (guess[i] == secret[i] || guess[i] == secret[i+1])
                         {
                         correctColorCount++;
                         }
@@ -61,7 +61,7 @@ namespace MasterMind2
                      }
                      for (int i = 0; i < 1; i++)
                          {
-                         if (guess[0] == secret[0] || guess[0] == secret[1])
+                         if (guess[i] == secret[i] || guess[i] == secret[i+1])
                         {
                         correctPositionCount++;
                         }

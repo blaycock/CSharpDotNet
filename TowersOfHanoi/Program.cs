@@ -55,5 +55,15 @@ namespace TowersOfHanoi
             }
             Console.Read();
         }
+
+        public static void MoveBlock (string sourceStack, string destinationStack)
+            {
+}
+
+        public static void IsMoveLegal (string sourceStack, string destinationStack)
+            {
+}
+
+        public static bool 
     }
 }
