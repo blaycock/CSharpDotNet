@@ -16,13 +16,14 @@ namespace TowersOfHanoi2
             board.Add("b", new Stack<int>());
             board.Add("c", new Stack<int>());
 
-            // start game with tower a having all of the disks 3 2 1
+            // start game with tower a having all of the disks 4 3 2 1
+            board["a"].Push(4);
             board["a"].Push(3);
             board["a"].Push(2);
             board["a"].Push(1);
 
             // create While Loop to loop through the game until the last board has a count of 3 disks
-            while (board["c"].Count < 3)
+            while (board["c"].Count < 4)
             {
                 // tell the player to enter thier move, show example of the move (i.e. a space b)
                 printBoard();
@@ -100,6 +101,7 @@ namespace TowersOfHanoi2
             {
                 board[to].Push(board[from].Pop());
                 return true;
+
             }
             // create logic that does not allow player to make a wrong move as described above
             return false;
