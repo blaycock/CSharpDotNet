@@ -35,7 +35,7 @@ namespace PoCos
             myBook.Pages = 235;
             myBook.SKU = 22566;
             myBook.Publisher = "Penguin Books";
-            myBook.Price = 19;
+            myBook.Price = 19.99;
             Console.WriteLine(myBook.GetBookDetails());
             Console.ReadLine();
 
@@ -96,7 +96,7 @@ namespace PoCos
         public int Pages { get; set; }
         public int SKU { get; set; }
         public string Publisher { get; set; }
-        public int Price { get; set; }
+        public double Price { get; set; }
         public book()
         {
             Title = "Unknown";
@@ -104,7 +104,7 @@ namespace PoCos
             Pages = 123;
             SKU = 4455544;
             Publisher = "Unknown";
-            Price = 12; 
+            Price = 12.00; 
         }
         public string GetBookDetails()
         {
