@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D50E5C57-C697-44F4-843C-F573FEAE53F2}</ProjectGuid>
+    <ProjectGuid>{21B9B6BA-F1B7-4B70-99D9-E01EE61ECED8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Misc_Project__Udemy__Whiteboard__etc_</RootNamespace>
-    <AssemblyName>Misc Project %28Udemy, Whiteboard, etc%29</AssemblyName>
+    <RootNamespace>ToDoItem</RootNamespace>
+    <AssemblyName>ToDoItem</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReverseCloneArray.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
