@@ -13,35 +13,40 @@ namespace SuperHeroes
             public string name;
             public string NickName;
 
+            public override string ToString()
+            {
+                return "\nName: " + name;
+                
+            }
+
             public void PrintGreeting()
             {
                 Console.WriteLine("Hi, my name is " + name + ", you can call me " + NickName + ".");
-                
             }
         }
 
         class SuperHero : Person
         {
-             public string RealName;
-             public string SuperPower;
+            public string RealName;
+            public string SuperPower;
 
-             public void PrintGreeting2()
-             {
-                Console.WriteLine("I am " + RealName + "! My super power is " + SuperPower + "!");
+            public void PrintGreeting()
+            {
+               Console.WriteLine("I am " + RealName + "! My super power is " + SuperPower + "!");
                
-             }
-
+            }
+             
         }
 
         class Villain : Person
         {
-              public string Nemesis;
+             public string Nemesis;
 
-              public void PrintGreeting3()
-              {
+             public void PrintGreeting()
+             {
                 Console.WriteLine("I am the Joker! Have you seen " + Nemesis + "?");
                     
-              }
+             }
         }
         static void Main(string[] args)
         {
@@ -59,12 +64,14 @@ namespace SuperHeroes
             incredible.RealName = "Mr. Incredible";
             incredible.SuperPower = "Super Strength";
             Console.Write("Mr. Incredible: ");
-            incredible.PrintGreeting2();
+            incredible.PrintGreeting();
 
             Villain joker = new Villain();
             joker.Nemesis = "Batman";
             Console.Write("Joker: ");
-            joker.PrintGreeting3();
+            joker.PrintGreeting();
+
+       
 
 
             Console.ReadKey();
