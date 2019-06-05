@@ -10,8 +10,8 @@ namespace SuperHeroes
     {
         class Person
         {
-            public string name;
-            public string NickName;
+            public string name {get; set;}
+            public string NickName{get; set;}
 
             public override string ToString()
             {
@@ -27,8 +27,8 @@ namespace SuperHeroes
 
         class SuperHero : Person
         {
-            public string RealName;
-            public string SuperPower;
+            public string RealName {get; set;}
+            public string SuperPower{get; set;}
 
             public void PrintGreeting()
             {
