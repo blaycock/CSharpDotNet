@@ -10,69 +10,64 @@ namespace SuperHeroes
     {
         class Person
         {
-            public string name {get; set;}
-            public string NickName{get; set;}
+            public string Name;
+            public string NickName;
+
+            public Person(string pName, string pNickName)
+            {
+                Name = pName;
+                NickName = pNickName;
+            }
 
             public override string ToString()
             {
-                return "\nName: " + name;
-                
+                return "Name: " + Name;
             }
 
             public void PrintGreeting()
             {
-                Console.WriteLine("Hi, my name is " + name + ", you can call me " + NickName + ".");
+                Console.WriteLine("Hi, my name is " + Name + ", you can call me " + NickName + ".");
             }
         }
 
         class SuperHero : Person
         {
-            public string RealName {get; set;}
-            public string SuperPower{get; set;}
+            public string RealName;
+            public string SuperPower;
+
+            public SuperHero(string NickName, string Name, string sRealName, string sSuperPower) : base (Name, NickName)
+            {
+                RealName = sRealName;
+                SuperPower = sSuperPower;
+            }
 
             public void PrintGreeting()
             {
-               Console.WriteLine("I am " + RealName + "! My super power is " + SuperPower + "!");
-               
+               Console.WriteLine("I am " + Name + ". When I am " + RealName + ", my super power is " + SuperPower + "!");
             }
-             
         }
 
         class Villain : Person
         {
-             public string Nemesis;
+            public string Nemesis;
 
-             public void PrintGreeting()
-             {
-                Console.WriteLine("I am the Joker! Have you seen " + Nemesis + "?");
-                    
-             }
+            public Villain(string NickName, string Name, string vNemesis) : base (Name, NickName)
+                {
+                    Nemesis = vNemesis;
+                }
+            public void PrintGreeting()
+            {
+                Console.WriteLine("I am " + Name + " have you seen " + Nemesis + "?");
+            }
         }
         static void Main(string[] args)
         {
-            /*List<Person>myPerson = new List<Person>();
-            Person myPerson = new Person("Ashley", "Peter", "Richard" );
-            */
-
-            Person william = new Person();
-            william.name = "William";
-            william.NickName = "Bill";
-            Console.Write("William: ");
-            william.PrintGreeting();
-
-            SuperHero incredible = new SuperHero();
-            incredible.RealName = "Mr. Incredible";
-            incredible.SuperPower = "Super Strength";
-            Console.Write("Mr. Incredible: ");
-            incredible.PrintGreeting();
-
-            Villain joker = new Villain();
-            joker.Nemesis = "Batman";
-            Console.Write("Joker: ");
-            joker.PrintGreeting();
-
-       
-
+            Person nPerson = new Person("Bill", "William");
+            nPerson.PrintGreeting();
+            SuperHero nSuperHero = new SuperHero(" ","Wade Turner", "Mr. Incredible", "Super Strength");
+            nSuperHero.PrintGreeting();
+            Villain nVillain = new Villain(" ", "The Joker", "Batman");
+            nVillain.PrintGreeting();
 
             Console.ReadKey();
         }
