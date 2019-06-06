@@ -11,7 +11,7 @@ namespace SuperHeroes
         class Person
         {
             public string Name {get; set;}
-            public string NickName{get;set;}
+            public string NickName {get;set;}
 
             public Person(string pName, string pNickName)
             {
@@ -21,14 +21,14 @@ namespace SuperHeroes
 
             public override string ToString()
             {
-                return Name + ": Hi, my name is " + Name + ", you can call me " + NickName + ".";
+                return Name + ": Hi, my name is " + Name + ", you can call me " + NickName + ".\n";
             }
         }
 
         class SuperHero : Person
         {
-            public string RealName{get;set;}
-            public string SuperPower{get;set;}
+            public string RealName {get;set;}
+            public string SuperPower {get;set;}
 
             public SuperHero(string NickName, string Name, string sRealName, string sSuperPower) : base (Name, NickName)
             {
@@ -38,7 +38,7 @@ namespace SuperHeroes
 
             public override string ToString()
             {
-                return Name + ": I am " + Name + ". When I am " + RealName + ", my super power is\n " + SuperPower + "!";
+                return Name + ": I am " + Name + ". When I am " + RealName + ", my super power is\n " + SuperPower + "!\n";
             }
         }
 
@@ -53,20 +53,20 @@ namespace SuperHeroes
 
             public override string ToString()
             {
-                return Name + ": I am " + Name + " have you seen " + Nemesis + "?";
+                return Name + ": I am " + Name + " have you seen " + Nemesis + "?\n";
             }
         }
         static void Main(string[] args)
         {
             List<Person> HumanList = new List<Person>();
-            Person nPerson = new Person("Bill", "William");
-            Person nPerson0 = new Person("Ashley", "Ash");
-            Person nPerson1 = new Person("Fred", "Mr. Fred");
-            Person nPerson2 = new Person("Mindy", "Izzy");
-            Person nPerson3 = new Person("Charlie", "Pat Pat");
+            Person newPerson = new Person("Bill", "William");
+            Person newPerson0 = new Person("Ashley", "Ash");
+            Person newPerson1 = new Person("Fred", "Mr. Fred");
+            Person newPerson2 = new Person("Mindy", "Izzy");
+            Person newPerson3 = new Person("Charlie", "Pat Pat");
             Person[] persons = {new Person("Ashley","Ash"), new Person("Fred", "Mr. Fred"), new Person("Mindy", "Izzy"), new Person("Charlie", "Pat Pat")};
             HumanList.AddRange(persons);
-            foreach (Person a in persons)
+            foreach (Person a in HumanList)
                 {
                 Console.WriteLine(a);
                 }
@@ -79,22 +79,22 @@ namespace SuperHeroes
             SuperHero newSuperHero3 = new SuperHero("", "Logan", "Wolverene", "Steel Bones");
             SuperHero[] superheroes = {new SuperHero("", "Perter Parker", "Spider Man", "Spider Power"), new SuperHero("", "Hawk", "Hawkeye", "Master Archer"), new SuperHero("", "Hulk", "Incredible Hulk", "Angry Strength"), new SuperHero("", "Logan", "Wolverene", "Claws")};
             SuperList.AddRange(superheroes);
-            foreach (SuperHero a in SuperList)
+            foreach (SuperHero b in SuperList)
                 {
-                Console.WriteLine(a);
+                Console.WriteLine(b);
                 }
 
             List<Villain> VillainList = new List<Villain>();
-            Villain newVillain = new Villain(" ", "The Joker", "Batman");
+            Villain newVillain = new Villain("", "The Joker", "Batman");
             Villain newVillain0 = new Villain("", "Dr. Octopus", "Spider Man");
             Villain newVillain1 = new Villain("", "Lex Luther", "Super Man");
             Villain newVillain2 = new Villain("", "Mr. Freeze", "Batman");
             Villain newVillain3 = new Villain("", "Magneto", "Wolverine");
             Villain[] villains = {new Villain("", "Dr. Octopus", "Spider Man"), new Villain("", "Lex Luther", "Super Man"), new Villain("", "Mr. Freeze", "Batman"), new Villain("", "Magneto", "Wolverine")};
             VillainList.AddRange(villains);
-            foreach (Person a in VillainList)
+            foreach (Villain c in VillainList)
                 {
-                Console.WriteLine(a);
+                Console.WriteLine(c);
                 }
 
             Console.ReadKey();
