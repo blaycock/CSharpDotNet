@@ -20,15 +20,15 @@ namespace Points
 		}
 		public Point2D(int x, int y)
 		{
-			this.X = x;
-			this.Y = y;
+			X = x;
+			Y = y;
 		}
 		public override bool Equals (object o)
 		{
 			if(o.GetType().Equals(this.GetType()))
 			{
 			Point2D p = (Point2D) o;
-			return (x == p.x) && (y == p.y);
+			return (this.X == p.X) && (this.Y == p.Y);
 			}
 			else
 			{
@@ -37,7 +37,8 @@ namespace Points
 		}
 		public override string ToString()
 		{
-			return (7,5);
+			return "(" + X + "," + Y + ")"; 
+			return $"({X}, {Y})";
 		}
 	}
 
