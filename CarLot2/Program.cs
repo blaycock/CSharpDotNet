@@ -8,13 +8,10 @@ namespace CarLot2
 {
     class Program
     {
-	public class CarLot
+	class CarLot
 	{
 		public string name {get; set;}
-		public string vehicleList() 
-		{
-			return "Truck", "SUV", "Crossover", "Hatchback", "Sedan", "Coupe", "Wagon", "Convertable";
-		}
+		public List<Vehicle> typeVehicle = new List<Vehicle>
 	}
 	abstract class Vehicle
 	{
