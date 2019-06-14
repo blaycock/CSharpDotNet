@@ -11,7 +11,7 @@ namespace CarLot2
 	class CarLot
 	{
 		public string name {get; set;}
-		public List<Vehicle> typeVehicle = new List<Vehicle>
+		public List<Vehicle> typeVehicle = new List<Vehicle>();
 	}
 	abstract class Vehicle
 	{
