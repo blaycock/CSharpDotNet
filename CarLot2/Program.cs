@@ -68,7 +68,7 @@ namespace CarLot2
 
         public override string VehicleDescription()
         {
-            string VehicleDescription ="Truck: " + make + model + price + bedSize;
+            string VehicleDescription ="Truck Information- " + " Make:" + make + " Model:" + model + " Price:" + price.ToString("c0") + " Bedsize:" + bedSize + " License #:" + LicenseNumber + "\n";
             return VehicleDescription;
         }
 	}
@@ -89,7 +89,7 @@ namespace CarLot2
 
             public override string VehicleDescription()
             {
-                string VehicleDescription = "Car: " + make + " " + model + " " + price + " " + type + " " + numDoors + " " + LicenseNumber;
+                string VehicleDescription = "Car Information- " + " Make:" + make + " Model:" + model + " Price:" + price.ToString("c0") + " Type:" + type + " Number of Doors:" + numDoors + " License #:" + LicenseNumber + "\n";
                 return VehicleDescription;
             }
         }
@@ -97,16 +97,16 @@ namespace CarLot2
         static void Main(string[] args)
         {
             CarLot UsedLot = new CarLot("Used Auto");
-            Vehicle v1 = new Truck("HG63TV", "Hyundai", "Elantra", 24000, 4);
-            Vehicle v2 = new Car("HG63TV", "Hyundai", "Elantra", "Sedan", 24000, 4);
+            Vehicle v1 = new Truck("CPP332D", "Ford", "F150", 60000, 6);
+            Vehicle v2 = new Car("BCC244L", "Audi", "A8", "Sedan", 75000, 4);
             UsedLot.AddCars(v1);
             UsedLot.AddCars(v2);
             UsedLot.PrintInventory();
             
 
             CarLot NewLot = new CarLot("New Auto");
-            Vehicle v3 = new Truck("HG63TV", "Hyundai", "Elantra", 24000, 4);
-            Vehicle v4 = new Car("HG63TV", "Hyundai", "Elantra", "Sedan", 24000, 4);
+            Vehicle v3 = new Truck("YLF77D", "Cheverolet", "Colorado", 32000, 4);
+            Vehicle v4 = new Car("PHF49O", "Nissan", "Rougue", "Crossover", 55000, 4);
             NewLot.AddCars(v3);
             NewLot.AddCars(v4);
             NewLot.PrintInventory();
