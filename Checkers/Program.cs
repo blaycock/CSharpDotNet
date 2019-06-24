@@ -13,7 +13,10 @@ namespace Checkers
             // The line below is needed so Console window can display
             // the black disk and the white circle correctly
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.WriteLine("Hello");
+            Checkers.Game nGame = new Game();
+            nGame.Start();
+            nGame.DrawBoard();
+            Console.Read();
 
             ///TODO: Start the game
             ///How do we start the game?
@@ -143,7 +146,7 @@ namespace Checkers
             while (!CheckForWin())
             {
                 ///TODO: You need to complete this block
-                ///hint: what function should you call here?
+                this.ProcessInput();
             }
             Console.WriteLine("You won!");
             Console.WriteLine("Press any key to exit.");
@@ -234,7 +237,7 @@ namespace Checkers
             }
         }
 
-        public Checker GetCaptureChecker(Position source, Position destination)
+        public Checker GetCaptureChecker( Color player, Position source, Position destination)
         {
             // ..
             if (IsCapture(source, destination))
@@ -267,7 +270,7 @@ namespace Checkers
             ///TODO: Now you have all building blocks, it is your turn to put them together
             ///
             //1. Get the checker at the source position:
-            // hint: use GetChecker function
+            Checker c = board.GetChecker(from);
 
             //2. If there is no checker at the source position
             // notify the user of the error, then stop
@@ -278,22 +281,28 @@ namespace Checkers
             // is a legal move
             // 
             // 3.1. 
-            // If (this is a legal move)
-            // {
-            //    Move the checker to the destination position
-            //    If (this is also a capture move)
-            //    {
-            //       Find the checker that will be captured
-            //       Remove the captured checker from the board
-            //    }
-            //  }
-            //  else (this is not a legal move)
-            //  {
-            //      Notify the user of the error and then stop
-            //  }
-
-            // Re-draw the board after each move
-
+            if (c != null)
+            {
+                if (IsLegalMove(c.Team, from, to))
+                {
+                    if (IsCapture(from, to))
+                    {
+                        Checker captured = GetCaptureChecker(c.Team, from, to);
+                        board.RemoveChecker(captured);
+                    }
+                    board.MoveChecker(c, to);
+                }
+                else
+                {
+                    Console.WriteLine("Ivalid move, please double check your source and destination.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid move, please double check your source and destination.");
+            }
+            // Re-draw the board after every move
+            DrawBoard();
 
         }
 
@@ -337,8 +346,11 @@ namespace Checkers
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("Press \"Enter\" key to make your move!");
+            Console.ReadKey();
         }
     }
+
 
     #endregion
 
