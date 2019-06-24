@@ -13,14 +13,9 @@ namespace Checkers
             // The line below is needed so Console window can display
             // the black disk and the white circle correctly
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Checkers.Game nGame = new Game();
+            Game nGame = new Game();
             nGame.Start();
-            nGame.DrawBoard();
-            Console.Read();
-
-            ///TODO: Start the game
-            ///How do we start the game?
-            ///hint: What function should you call here?
+            Console.ReadKey();
         }
     }
 
@@ -153,7 +148,7 @@ namespace Checkers
             Console.ReadKey();
         }
 
-        public bool IsLegalMove(Color player, Position source, Position destination)
+        public bool IsLegalMove( Position source, Position destination)
         {
             // 1. Both the source position and the destination position 
             // must be integers between 0 and 7
@@ -237,7 +232,7 @@ namespace Checkers
             }
         }
 
-        public Checker GetCaptureChecker( Color player, Position source, Position destination)
+        public Checker GetCaptureChecker( Position source, Position destination)
         {
             // ..
             if (IsCapture(source, destination))
@@ -270,27 +265,19 @@ namespace Checkers
             ///TODO: Now you have all building blocks, it is your turn to put them together
             ///
             //1. Get the checker at the source position:
-            Checker c = board.GetChecker(from);
-
+            Checker srcCheck = board.GetChecker(from);
             //2. If there is no checker at the source position
             // notify the user of the error, then stop
-
-
-            //3. If there is a checker at the source position
-            // then check if the move from the source position to the destination position
-            // is a legal move
-            // 
-            // 3.1. 
-            if (c != null)
+            if (srcCheck != null)
             {
-                if (IsLegalMove(c.Team, from, to))
+                if (this.IsLegalMove(from, to))
                 {
-                    if (IsCapture(from, to))
+                    if (this.IsCapture(from, to))
                     {
-                        Checker captured = GetCaptureChecker(c.Team, from, to);
+                        Checker captured = this.GetCaptureChecker(from, to);
                         board.RemoveChecker(captured);
                     }
-                    board.MoveChecker(c, to);
+                    board.MoveChecker(srcCheck, to);
                 }
                 else
                 {
