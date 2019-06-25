@@ -36,13 +36,13 @@ namespace BooksInventory
             context.Database.EnsureCreated();
 
             // ask the user for a book to add
-            Console.WriteLine("Enter Author and Title of Book");
-            String fullTitle = Console.ReadLine();
+            Console.WriteLine("Enter the full Author and Title of the Book (sperated by , ex. The Martian, Andy Weir)");
+            String fullBook = Console.ReadLine();
 
             // split the input into parts, and make sure 
             // we have 2 parts only
-            String[] parts = fullTitle.Split();
-            if (parts.Length == 2)
+            String[] parts = fullBook.Split(',');
+            if (parts.Length >= 2)
             {
                 // create a new book object, notce that we do not 
                 // select an id, we let the framework handle that
@@ -66,10 +66,10 @@ namespace BooksInventory
             // notice how similar this is to looping through a list
             foreach (Books s in context.books)
             {
-                Console.WriteLine("{0} - {1} {2}",
+                Console.WriteLine("{0} - {1} |{2}",
                      s.Id, s.Title, s.Author);
             }
         }
-        }
+    }
     
 }
