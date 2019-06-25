@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoItem", "ToDoItem\ToDoIt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowersOfHanoi2", "TowersOfHanoi2\TowersOfHanoi2.csproj", "{B1C32D40-3E07-4B8F-9AEE-FB8DAD5C2CFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp", "ToDoApp\ToDoApp.csproj", "{E9B765A4-A919-4E2F-95CF-D05C4A097520}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +107,10 @@ Global
 		{B1C32D40-3E07-4B8F-9AEE-FB8DAD5C2CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C32D40-3E07-4B8F-9AEE-FB8DAD5C2CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1C32D40-3E07-4B8F-9AEE-FB8DAD5C2CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9B765A4-A919-4E2F-95CF-D05C4A097520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9B765A4-A919-4E2F-95CF-D05C4A097520}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9B765A4-A919-4E2F-95CF-D05C4A097520}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9B765A4-A919-4E2F-95CF-D05C4A097520}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
