@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
 namespace BooksInventory
@@ -62,9 +64,10 @@ namespace BooksInventory
             }
 
             Console.WriteLine("The Current List of Books are: ");
+            IEnumerable<Books> bookCollection = context.books.OrderBy(book => book.Title);
             // use a for each loop to loop through the books in the context
             // notice how similar this is to looping through a list
-            foreach (Books s in context.books)
+            foreach (Books s in bookCollection)
             {
                 Console.WriteLine("{0} - {1} |{2}",
                      s.Id, s.Title, s.Author);
