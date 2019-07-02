@@ -4,13 +4,13 @@ using System.Text;
 
 namespace ToDoApp
 {
-    class ToDoItem
+    class ToDoItems
     {
         public int Id { get; private set; }
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
         public string Status { get; set; }
-        public ToDoItem(string Description, DateTime DueDate, string Status)
+        public ToDoItems(string Description, DateTime DueDate, string Status)
         {
             this.Description = Description;
             this.DueDate = DueDate;

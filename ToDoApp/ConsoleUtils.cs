@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ToDoApp
 {
-    class ConsoleUtils
+    public class ConsoleUtils
     {
         public void DisplayMenu()
         {
@@ -17,26 +17,66 @@ namespace ToDoApp
                             Q/q: Quit";
             Console.WriteLine(menu);
         }
-        public void ProcessInput(userChoice choice)
+        public void ProcessInput(Userchoice choice)
         {
-            while(choice != userChoice.Quit)
+            while (choice != Userchoice.ListItem)
             {
                 switch (choice)
                 {
-                    case userChoice.ListItem:
-                        app.ListItems();
+                    case Userchoice.ListItem:
+                        App.GetToDoItems();
+                        break;
+
+                }
+            }
+            while (choice != Userchoice.AddItem)
+            {
+                switch (choice)
+                {
+                    case Userchoice.AddItem:
+                        App.AddItem();
+                        break;
+
+                }
+            }
+            while (choice != Userchoice.UpdateItem)
+            {
+                switch (choice)
+                {
+                    case Userchoice.UpdateItem:
+                        App.UpdateItem();
+                        break;
+
+                }
+            }
+            while (choice != Userchoice.DeleteItem)
+            {
+                switch (choice)
+                {
+                    case Userchoice.DeleteItem:
+                        App.DeleteItem();
+                        break;
+
+                }
+            }
+            while (choice != Userchoice.Quit)
+            {
+                switch (choice)
+                {
+                    case Userchoice.ListItem:
+                        App.GetToDoItems();
                         break;
 
                 }
             }
         }
-        public enum userChoice
+        public enum Userchoice
         {
             ListItem,
             AddItem,
             UpdateItem,
             DeleteItem,
-            Quit
+            Quit,
         }
             
     }

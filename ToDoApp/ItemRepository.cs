@@ -17,16 +17,16 @@ namespace ToDoApp
 
         //List all todo items
 
-        public List<ToDoItem> GetToDoItems()
+        public List<ToDoItems> GetToDoItems()
         {
-            IEnumerable<ToDoItem> list = context.ToDoItems;
+            IEnumerable<ToDoItems> list = context.ToDoItems;
             return list.ToList();
         }
 
         //add item
         public void AddItem(string Description, DateTime DueDate, string Status)
         {
-            ToDoItem item = new ToDoItem(Description, DueDate, Status);
+            ToDoItems item = new ToDoItems(Description, DueDate, Status);
             context.ToDoItems.Add(item);
             context.SaveChanges();
         }
@@ -38,7 +38,7 @@ namespace ToDoApp
 
         public void UpdateItem(int id, string newDescription, string newStatus, DateTime newDueDate)
         {
-            ToDoItem oldItem = context.ToDoItems.Where(item => item.Id == id).FirstOrDefault();
+            ToDoItems oldItem = context.ToDoItems.Where(item => item.Id == id).FirstOrDefault();
             oldItem.Description = newDescription;
             oldItem.Status = newStatus;
             oldItem.DueDate = newDueDate;
@@ -49,8 +49,8 @@ namespace ToDoApp
         //delete item
         public void DeleteItem(int id)
         {
-            ToDoItem oldItem = context.ToDoItems.Where(item => item.Id == id).FirstOrDefault();
-            context.ToDoItems.Remove(oldItem);
+            ToDoItems items = context.ToDoItems.Where(item => item.Id == id).FirstOrDefault();
+            context.ToDoItems.Remove(items);
             context.SaveChanges();
         }
 
