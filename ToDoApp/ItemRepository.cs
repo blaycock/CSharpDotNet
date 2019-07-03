@@ -23,8 +23,15 @@ namespace ToDoApp
             return list.ToList();
         }
 
+        //List all done items
+        public List<ToDoItems> GetToDoneItems()
+        {
+            IEnumerable<ToDoItems> donelist = context.ToDoItems;
+            return donelist.ToList();
+        }
+
         //add item
-        public void AddItem(string Description, DateTime DueDate, string Status)
+        public void AddItem(string Description, string DueDate, string Status)
         {
             ToDoItems item = new ToDoItems(Description, DueDate, Status);
             context.ToDoItems.Add(item);
@@ -36,7 +43,7 @@ namespace ToDoApp
 
         }*/
 
-        public void UpdateItem(int id, string newDescription, string newStatus, DateTime newDueDate)
+        public void UpdateItem(int id, string newDescription, string newStatus, string newDueDate)
         {
             ToDoItems oldItem = context.ToDoItems.Where(item => item.Id == id).FirstOrDefault();
             oldItem.Description = newDescription;

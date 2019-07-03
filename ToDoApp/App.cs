@@ -12,18 +12,24 @@ namespace ToDoApp
             repo = new ItemRepository();
         }
 
-        public void ListItems()
+        public List<ToDoItems> ListItems()
         {
             repo.GetToDoItems();
+            return repo.GetToDoItems();
+        }
+        public List<ToDoItems> ListDoneItems()
+        {
+            repo.GetToDoneItems();
+            return repo.GetToDoneItems();
         }
 
-        public void AddItem(string Description, string Status, DateTime DueDate)
+        public void AddItem(string Description, string Status, string DueDate)
         {
             repo.AddItem(Description, DueDate, Status);
 
         }
 
-        public void UpdateItem(int Id, string Description, string Status, DateTime DueDate)
+        public void UpdateItem(int Id, string Description, string Status, string DueDate)
         {
             repo.UpdateItem(Id, Description, Status, DueDate);
         }

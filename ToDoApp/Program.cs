@@ -6,7 +6,8 @@ namespace ToDoApp
     {
         static void Main(string[] args)
         {
-            ConsoleUtils.ProcessInput();
+            ConsoleUtils cons = new ConsoleUtils();
+            cons.ProcessInput();
         }
     }
 }

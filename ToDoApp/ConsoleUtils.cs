@@ -7,76 +7,85 @@ namespace ToDoApp
 {
     public class ConsoleUtils
     {
+        App app = new App();
+        bool ProgramRunning = true;
         public void DisplayMenu()
         {
-            string menu = @"Welcome to my todo app. Choose and option and continue
-                            L/l: List all items
-                            A/a: Add Item
-                            U/u: Update Item
-                            D/d: Delete Item
-                            Q/q: Quit";
+            string menu = @"Welcome to my ToDo List App. Please choose an option from the below menu!
+                      L/l: List all items
+                      D/d: List done items
+                      P/p: List pending items
+                      A/a: Add item
+                      U/u: Update item
+                      D/d: Delete item
+                      Q/q: Quit";
             Console.WriteLine(menu);
         }
-        public void ProcessInput(Userchoice choice)
+        public void ProcessInput()
         {
-            while (choice != Userchoice.ListItem)
+            
+            while (ProgramRunning)
             {
-                switch (choice)
+                DisplayMenu();
+                String input = Console.ReadLine();
+                if (input == "L" || input == "l")
                 {
-                    case Userchoice.ListItem:
-                        App.GetToDoItems();
-                        break;
+                    List<ToDoItems> items = app.ListItems();
+                    PrintHeader();
+                    foreach (ToDoItems a in items)
+                    {
+                        Console.WriteLine(a);
+                    }
 
                 }
-            }
-            while (choice != Userchoice.AddItem)
-            {
-                switch (choice)
+                if (input == "D" || input == "d")
                 {
-                    case Userchoice.AddItem:
-                        App.AddItem();
-                        break;
+                    List<ToDoItems> items = app.ListDoneItems();
+                    PrintHeader();
+                    foreach (ToDoItems b in items)
+                    {
+                        Console.WriteLine(b);
+                    }
 
                 }
-            }
-            while (choice != Userchoice.UpdateItem)
-            {
-                switch (choice)
+                if (input == "A" || input == "a")
                 {
-                    case Userchoice.UpdateItem:
-                        App.UpdateItem();
-                        break;
-
+                    Console.WriteLine("What is the description of the item that you are adding?");
+                    String Description = Console.ReadLine();
+                    Console.WriteLine("What is the status of the item that you are adding?");
+                    String Status = Console.ReadLine();
+                    Console.WriteLine("What is the due date of the item that you are adding?");
+                    String DueDate = Console.ReadLine();
+                    app.AddItem(Description, Status, DueDate);
                 }
-            }
-            while (choice != Userchoice.DeleteItem)
-            {
-                switch (choice)
+                if (input == "U" || input == "u")
                 {
-                    case Userchoice.DeleteItem:
-                        App.DeleteItem();
-                        break;
-
+                    Console.WriteLine("What is the ID of the item you want to update?");
+                    int Id = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("What is the Description you want to update for the item?");
+                    String Description = Console.ReadLine();
+                    Console.WriteLine("What is the Status you want to update for the item?");
+                    String Status = Console.ReadLine();
+                    Console.WriteLine("What is the Due Date you want to update for the item?");
+                    String DueDate = Console.ReadLine();
+                    app.UpdateItem(Id, Description, Status, DueDate);
                 }
-            }
-            while (choice != Userchoice.Quit)
-            {
-                switch (choice)
+                if (input == "D" || input == "d")
                 {
-                    case Userchoice.ListItem:
-                        App.GetToDoItems();
-                        break;
-
+                    Console.WriteLine("What is the ID of the item you want to delete?");
+                    int Id = Convert.ToInt32(Console.ReadLine());
+                    app.DeleteItem(Id);
+                }
+                if (input == "Q" || input == "q")
+                {
+                    ProgramRunning = false;
                 }
             }
         }
-        public enum Userchoice
+        public void PrintHeader()
         {
-            ListItem,
-            AddItem,
-            UpdateItem,
-            DeleteItem,
-            Quit,
+            Console.WriteLine("ID|Description|Status|Due Date");
+            Console.WriteLine("--+-----------+------+--------");
         }
             
     }
