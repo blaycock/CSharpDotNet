@@ -26,8 +26,15 @@ namespace ToDoApp
         //List all done items
         public List<ToDoItems> GetToDoneItems()
         {
-            IEnumerable<ToDoItems> donelist = context.ToDoItems;
-            return donelist.ToList();
+            List<ToDoItems> ret = context.ToDoItems.Where(x => x.Status == "Done" || x.Status == "done").ToList();
+            return ret;
+        }
+
+        //list all pending items
+        public List<ToDoItems> GetToPendingItems()
+        {
+            List<ToDoItems> ret = context.ToDoItems.Where(x => x.Status == "Pending" || x.Status == "pending").ToList();
+            return ret;
         }
 
         //add item
@@ -38,11 +45,7 @@ namespace ToDoApp
             context.SaveChanges();
         }
 
-        /*public void AddItem(ToDoItem item)
-        {
-
-        }*/
-
+        //update item
         public void UpdateItem(int id, string newDescription, string newStatus, string newDueDate)
         {
             ToDoItems oldItem = context.ToDoItems.Where(item => item.Id == id).FirstOrDefault();

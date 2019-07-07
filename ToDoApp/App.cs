@@ -22,7 +22,11 @@ namespace ToDoApp
             repo.GetToDoneItems();
             return repo.GetToDoneItems();
         }
-
+        public List<ToDoItems> ListPendingItems()
+        {
+            repo.GetToPendingItems();
+            return repo.GetToPendingItems();
+        }
         public void AddItem(string Description, string Status, string DueDate)
         {
             repo.AddItem(Description, DueDate, Status);

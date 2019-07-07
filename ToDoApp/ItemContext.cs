@@ -20,7 +20,7 @@ namespace ToDoApp
             // get the base directory for the project
             DirectoryInfo ProjectBase = ExecutionDirectory.Parent.Parent.Parent;
 
-            // add 'students.db' to the project directory
+            // add 'ToDoItems.db' to the project directory
             String DatabaseFile = Path.Combine(ProjectBase.FullName, "ToDoItems.db");
 
             // to check what the path of the file is, uncomment the file below
